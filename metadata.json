@@ -1,0 +1,8 @@
+
+{
+  "name": "Nova Systems - Soluciones Integrales",
+  "description": "Sistemas de gestión, diseño web y tecnología integral para potenciar empresas y pymes.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
