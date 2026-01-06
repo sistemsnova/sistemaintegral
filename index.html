@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Systems | Gestión para Empresas</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
@@ -36,7 +36,6 @@
         }
         .whatsapp-pulse { animation: pulse-orange 2s infinite; }
         
-        /* Loader inicial para evitar pantalla negra mientras Babel procesa el código */
         #loader {
             position: fixed;
             inset: 0;
@@ -64,21 +63,15 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.3em;
-            animation: pulse 1.5s infinite;
         }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
     </style>
 
-    <!-- Shim para process.env (Evita el crash de Nova IA en navegadores reales) -->
+    <!-- Shim fundamental para que no falle la IA en GitHub Pages -->
     <script>
-      window.process = {
-        env: {
-          API_KEY: "" // La llave se inyecta dinámicamente o se maneja vía AI Studio
-        }
-      };
+      window.process = { env: { API_KEY: "" } };
     </script>
 
-    <!-- Babel Standalone: Permite ejecutar .tsx directamente en el navegador -->
+    <!-- Babel para transformar TSX en el navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="importmap">
@@ -88,38 +81,21 @@
     "react": "https://esm.sh/react@19.0.0",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
 </head>
 <body class="tech-grid">
-    <!-- Pantalla de Carga de Nova -->
     <div id="loader">
         <div class="spinner"></div>
-        <div class="loader-text">Inicializando Nova Systems</div>
+        <div class="loader-text">Nova Systems está cargando...</div>
     </div>
 
     <div id="root"></div>
 
-    <!-- 
-      IMPORTANTE: Usamos type="text/babel" para que Babel procese el punto de entrada.
-      Esto soluciona el error de MIME type en GitHub Pages.
-    -->
-    <script type="text/babel" data-type="module" data-presets="typescript,react">
-        import './index.tsx';
-        
-        // Función para remover el loader cuando React esté listo
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                if (loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => loader.remove(), 500);
-                }
-            }, 1000);
-        });
-    </script>
+    <!-- Cargamos el punto de entrada usando Babel con src para evitar el error de MIME type de GitHub -->
+    <script type="text/babel" src="index.tsx" data-presets="typescript,react"></script>
 </body>
 </html>
