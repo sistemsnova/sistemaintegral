@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import ChatBot from './components/ChatBot';
-import Logo from './components/Logo';
-import { Service } from './types';
+import Navbar from './components/Navbar.tsx';
+import ChatBot from './components/ChatBot.tsx';
+import Logo from './components/Logo.tsx';
+import { Service } from './types.ts';
 
 const SERVICES: Service[] = [
   {
@@ -472,7 +472,7 @@ const App: React.FC = () => {
                     </select>
                   </div>
                 </div>
-                <button className="w-full bg-orange-500 text-slate-950 font-black py-7 rounded-3xl text-xl hover:bg-white hover:scale-[1.02] transition-all shadow-2xl shadow-orange-500/20 uppercase tracking-widest">
+                <button type="button" className="w-full bg-orange-500 text-slate-950 font-black py-7 rounded-3xl text-xl hover:bg-white hover:scale-[1.02] transition-all shadow-2xl shadow-orange-500/20 uppercase tracking-widest">
                   Enviar a sistemsnova@gmail.com
                 </button>
               </form>
