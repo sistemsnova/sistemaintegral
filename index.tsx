@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App.tsx';
 
 const renderApp = () => {
   const rootElement = document.getElementById('root');
@@ -14,7 +14,7 @@ const renderApp = () => {
     </React.StrictMode>
   );
   
-  // Limpieza de seguridad del loader
+  // Ocultar el loader cuando React tome el control
   const loader = document.getElementById('loader');
   if (loader) {
     setTimeout(() => {
@@ -24,7 +24,6 @@ const renderApp = () => {
   }
 };
 
-// Asegurar que el DOM esté cargado antes de intentar montar React
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', renderApp);
 } else {
